@@ -61,6 +61,17 @@
     ] withRowAnimation:UITableViewRowAnimationAutomatic];
 }
 
+#pragma mark -
+
+- (void)viewDidLoad {
+    [super viewDidLoad];
+
+    self.tableView.separatorInset = UIEdgeInsetsZero;
+    self.tableView.rowHeight = 60;
+}
+
+#pragma mark - UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -70,7 +81,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"Cell"];
+    UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
 
     CCLRequestRecording *recording = [[CCLRequestManager standardManager].recordings objectAtIndex:indexPath.row];
     NSHTTPURLResponse *response = (NSHTTPURLResponse *)[recording response];
